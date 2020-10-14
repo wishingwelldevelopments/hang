@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <theme-toggle-component></theme-toggle-component>
     <figure-component :figureDisplay="state.goes" :startAnimation="state.result"></figure-component>
     <h1 v-if="state.result.status == false">{{ state.result.msg }} The Word You Were Looking For Was : {{ state.result.answer }}</h1>
     <h1 v-if="state.result.status == true">{{ state.result.msg }}</h1>
@@ -8,7 +9,7 @@
         <input :value="state.correct.includes(w) ? w : ''" :class="state.correct.includes(w) ? 'correct' : ''" style="pointer-events:none;user-select:none;" readonly/>
       </div>
     </div>
-    <input v-if="Object.keys(state.result).length === 0" placeholder="Guess a Letter :" class="input-field" v-model="state.letter" style="width:200px;margin-top:20px;" @keyup="go(state.letter)" autofocus/>
+    <input v-if="Object.keys(state.result).length === 0" placeholder="Hint : Rhymes With Dog" class="input-field" v-model="state.letter" style="width:250px;margin-top:20px;" @keyup="go(state.letter)" autofocus/>
     <h1>Attempts Left : {{ state.goes }}</h1>
     <div class="attempts">
       <p v-for="(att, index) in state.attempts" :key="index">{{ att }}<span style="margin-right:5px;" v-if="index+1 < state.attempts.length">,</span></p>
